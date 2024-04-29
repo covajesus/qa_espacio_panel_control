@@ -144,8 +144,8 @@ export default {
                         this.loading = false;
                     }
                 });
-
-            this.get_permissions(response.data.data.user.rol_id);
+            alert(this.rol_id)
+            this.get_permissions(this.rol_id);
         },
         get_permissions(rol_id) {
 
