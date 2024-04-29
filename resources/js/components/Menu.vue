@@ -112,6 +112,33 @@ export default {
             const token = localStorage.getItem('token')
 
             localStorage.removeItem('token');
+            localStorage.removeItem('id');
+            localStorage.removeItem('rol_id');
+            localStorage.removeItem('names');
+            localStorage.removeItem('email');
+            localStorage.removeItem('add_section');
+            localStorage.removeItem('edit_section');
+            localStorage.removeItem('delete_section');
+            localStorage.removeItem('copy_section');
+            localStorage.removeItem('order_section');
+            localStorage.removeItem('add_category');
+            localStorage.removeItem('edit_category');
+            localStorage.removeItem('delete_category');
+            localStorage.removeItem('copy_category');
+            localStorage.removeItem('order_category');
+            localStorage.removeItem('add_content');
+            localStorage.removeItem('edit_content');
+            localStorage.removeItem('delete_content');
+            localStorage.removeItem('copy_content');
+            localStorage.removeItem('order_content');
+            localStorage.removeItem('watch_audit');
+            localStorage.removeItem('add_user');
+            localStorage.removeItem('edit_user');
+            localStorage.removeItem('delete_user');
+            localStorage.removeItem('add_rol');
+            localStorage.removeItem('edit_rol');
+            localStorage.removeItem('delete_rol');
+            
             window.location.href = '/';
         }
     },
