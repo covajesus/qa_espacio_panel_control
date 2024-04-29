@@ -145,10 +145,9 @@ export default {
                     }
                 });
 
-            this.get_permissions();
+            this.get_permissions(this.rol_id);
         },
-        get_permissions() {
-            let rol_id = localStorage.getItem('rol_id')
+        get_permissions(rol_id) {
 
             axios
                 .get("https://qa.paneldecontrolem.cl/api/rol/" + rol_id)
