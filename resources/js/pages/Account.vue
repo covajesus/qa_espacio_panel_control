@@ -35,7 +35,7 @@ export default {
 
         try {
           const response = await axios.post(
-                  "https://paneldecontrolem.cl/api/audit/store",
+                  "https://qa.paneldecontrolem.cl/api/audit/store",
                   formData,
                   {
                     headers: {
