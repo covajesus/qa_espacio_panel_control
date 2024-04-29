@@ -111,7 +111,7 @@ export default {
         this.email = localStorage.getItem("email");
     },
     methods: {
-        login() {
+        async login() {
             const formData = new FormData();
             formData.append("email", this.email);
             formData.append("password", this.password);
@@ -134,6 +134,8 @@ export default {
                     localStorage.setItem('token', this.token)
                     localStorage.setItem('names', this.names)
                     localStorage.setItem('email', this.email)
+
+                    this.get_permissions(this.rol_id);
                 })
                 .catch((error) => {
                     if (
@@ -144,8 +146,8 @@ export default {
                         this.loading = false;
                     }
                 });
-            alert(this.rol_id)
-            this.get_permissions(this.rol_id);
+
+            
         },
         get_permissions(rol_id) {
 
