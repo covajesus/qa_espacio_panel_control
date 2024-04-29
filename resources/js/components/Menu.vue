@@ -105,88 +105,79 @@ export default {
     methods: {
         toggleSidebar() {
             const pushMenuBtn = this.$refs.pushMenuBtn;
+
             $(pushMenuBtn).PushMenu('toggle');
         },
         Logout() {
-            // Logout logic
-        },
-        retrieveLocalStorageValues() {
-            // Retrieve values from localStorage
-            this.rol_id = localStorage.getItem('rol_id');
-            this.add_section = localStorage.getItem('add_section');
-            this.edit_section = localStorage.getItem('edit_section');
-            this.delete_section = localStorage.getItem('delete_section');
-            this.copy_section = localStorage.getItem('copy_section');
-            this.order_section = localStorage.getItem('order_section');
-            this.add_category = localStorage.getItem('add_category');
-            this.edit_category = localStorage.getItem('edit_category');
-            this.delete_category = localStorage.getItem('delete_category');
-            this.copy_category = localStorage.getItem('copy_category');
-            this.order_category = localStorage.getItem('order_category');
-            this.add_content = localStorage.getItem('add_content');
-            this.edit_content = localStorage.getItem('edit_content');
-            this.delete_content = localStorage.getItem('delete_content');
-            this.copy_content = localStorage.getItem('copy_content');
-            this.order_content = localStorage.getItem('order_content');
-            this.watch_audit = localStorage.getItem('watch_audit');
-            this.add_user = localStorage.getItem('add_user');
-            this.edit_user = localStorage.getItem('edit_user');
-            this.delete_user = localStorage.getItem('delete_user');
-            this.add_rol = localStorage.getItem('add_rol');
-            this.edit_rol = localStorage.getItem('edit_rol');
-            this.delete_rol = localStorage.getItem('delete_rol');
-        },
-        handleStorageUpdate(event) {
-            // Check if localStorage keys related to this component are updated
-            if (
-                event.key === 'rol_id' ||
-                event.key === 'add_section' ||
-                event.key === 'edit_section' ||
-                event.key === 'delete_section' ||
-                event.key === 'copy_section' ||
-                event.key === 'order_section' ||
-                event.key === 'add_category' ||
-                event.key === 'edit_category' ||
-                event.key === 'delete_category' ||
-                event.key === 'copy_category' ||
-                event.key === 'order_category' ||
-                event.key === 'add_content' ||
-                event.key === 'edit_content' ||
-                event.key === 'delete_content' ||
-                event.key === 'copy_content' ||
-                event.key === 'order_content' ||
-                event.key === 'watch_audit' ||
-                event.key === 'add_user' ||
-                event.key === 'edit_user' ||
-                event.key === 'delete_user' ||
-                event.key === 'add_rol' ||
-                event.key === 'edit_rol' ||
-                event.key === 'delete_rol'
-            ) {
-                // If updated, retrieve values again
-                this.retrieveLocalStorageValues();
-            }
+            const token = localStorage.getItem('token')
+
+            localStorage.removeItem('token');
+            localStorage.removeItem('id');
+            localStorage.removeItem('rol_id');
+            localStorage.removeItem('names');
+            localStorage.removeItem('email');
+            localStorage.removeItem('add_section');
+            localStorage.removeItem('edit_section');
+            localStorage.removeItem('delete_section');
+            localStorage.removeItem('copy_section');
+            localStorage.removeItem('order_section');
+            localStorage.removeItem('add_category');
+            localStorage.removeItem('edit_category');
+            localStorage.removeItem('delete_category');
+            localStorage.removeItem('copy_category');
+            localStorage.removeItem('order_category');
+            localStorage.removeItem('add_content');
+            localStorage.removeItem('edit_content');
+            localStorage.removeItem('delete_content');
+            localStorage.removeItem('copy_content');
+            localStorage.removeItem('order_content');
+            localStorage.removeItem('watch_audit');
+            localStorage.removeItem('add_user');
+            localStorage.removeItem('edit_user');
+            localStorage.removeItem('delete_user');
+            localStorage.removeItem('add_rol');
+            localStorage.removeItem('edit_rol');
+            localStorage.removeItem('delete_rol');
+            
+            window.location.href = '/';
         }
     },
-    mounted() {
-        // Retrieve initial values from localStorage
-        this.retrieveLocalStorageValues();
+    async created() {
+        this.add_section = localStorage.getItem('add_section');
+        this.edit_section = localStorage.getItem('edit_section');
+        this.delete_section = localStorage.getItem('delete_section');
+        this.copy_section = localStorage.getItem('copy_section');
+        this.order_section = localStorage.getItem('order_section');
 
-        // Listen for changes in localStorage
-        window.addEventListener('storage', this.handleStorageUpdate);
-        
-        // Fetch rol_id from API
+        this.add_category = localStorage.getItem('add_category');
+        this.edit_category = localStorage.getItem('edit_category');
+        this.delete_category = localStorage.getItem('delete_category');
+        this.copy_category = localStorage.getItem('copy_category');
+        this.order_category = localStorage.getItem('order_category');
+
+        this.add_content = localStorage.getItem('add_content');
+        this.edit_content = localStorage.getItem('edit_content');
+        this.delete_content = localStorage.getItem('delete_content');
+        this.copy_content = localStorage.getItem('copy_content');
+        this.order_content = localStorage.getItem('order_content');
+
+        this.watch_audit = localStorage.getItem('watch_audit');
+
+        this.add_user = localStorage.getItem('add_user');
+        this.edit_user = localStorage.getItem('edit_user');
+        this.delete_user = localStorage.getItem('delete_user');
+
+        this.add_rol = localStorage.getItem('add_rol');
+        this.edit_rol = localStorage.getItem('edit_rol');
+        this.delete_rol = localStorage.getItem('delete_rol');
+
         axios.get('/session-data')
-            .then(response => {
-                this.rol_id = response.data.rol_id;
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    },
-    beforeDestroy() {
-        // Cleanup event listener
-        window.removeEventListener('storage', this.handleStorageUpdate);
-    },
+        .then(response => {
+            this.rol_id = response.data.rol_id;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
 }
 </script>
