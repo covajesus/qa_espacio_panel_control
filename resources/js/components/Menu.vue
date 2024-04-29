@@ -143,6 +143,7 @@ export default {
         }
     },
     mounted() {
+        console.log(localStorage.getItem('add_section'))
         this.add_section = localStorage.getItem('add_section');
         this.edit_section = localStorage.getItem('edit_section');
         this.delete_section = localStorage.getItem('delete_section');
