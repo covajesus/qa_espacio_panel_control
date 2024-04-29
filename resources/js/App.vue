@@ -154,6 +154,7 @@ export default {
             axios
                 .get("https://qa.paneldecontrolem.cl/api/rol/" + rol_id)
                 .then((response) => {
+                    alert(response.data.rol_permissions.add_section)
                     localStorage.setItem('add_section', response.data.rol_permissions.add_section)
                     localStorage.setItem('edit_section', response.data.rol_permissions.edit_section)
                     localStorage.setItem('delete_section', response.data.rol_permissions.delete_section)
