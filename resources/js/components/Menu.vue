@@ -143,6 +143,7 @@ export default {
         }
     },
     async created() {
+        console.log(localStorage.getItem('rol_id'))
         this.add_section = localStorage.getItem('add_section');
         this.edit_section = localStorage.getItem('edit_section');
         this.delete_section = localStorage.getItem('delete_section');
