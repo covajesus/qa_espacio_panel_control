@@ -276,7 +276,7 @@ export default {
 
                 try {
                 const response = await axios.post(
-                        "https://paneldecontrolem.cl/api/audit/store",
+                        "https://qa.paneldecontrolem.cl/api/audit/store",
                         formData,
                         {
                             headers: {
@@ -300,7 +300,7 @@ export default {
                     
                     try {
                         const response = await axios.get(
-                            "https://paneldecontrolem.cl/api/category/copy/" + id,
+                            "https://qa.paneldecontrolem.cl/api/category/copy/" + id,
                             {
                                 headers: {
                                     Authorization: `Bearer ${token}`,
@@ -324,7 +324,7 @@ export default {
             if (token) {
                 try {
                     const response = await axios.get(
-                        "https://paneldecontrolem.cl/api/category/move_down/" + this.section_input + "/" + id,
+                        "https://qa.paneldecontrolem.cl/api/category/move_down/" + this.section_input + "/" + id,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -335,7 +335,7 @@ export default {
                     
                     try {
                         const response = await axios.get(
-                            "https://paneldecontrolem.cl/api/category/search/" + this.section_input,
+                            "https://qa.paneldecontrolem.cl/api/category/search/" + this.section_input,
                             {
                                 headers: {
                                     Authorization: `Bearer ${token}`,
@@ -362,7 +362,7 @@ export default {
             if(token) {
                 try {
                     const response = await axios.get(
-                        "https://paneldecontrolem.cl/api/category/move_up/" + this.section_input + "/" + id,
+                        "https://qa.paneldecontrolem.cl/api/category/move_up/" + this.section_input + "/" + id,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -374,7 +374,7 @@ export default {
                     
                     try {
                         const response = await axios.get(
-                            "https://paneldecontrolem.cl/api/category/search/" + this.section_input,
+                            "https://qa.paneldecontrolem.cl/api/category/search/" + this.section_input,
                             {
                                 headers: {
                                     Authorization: `Bearer ${token}`,
@@ -406,7 +406,7 @@ export default {
             if(token) {
                 try {
                     const response = await axios.get(
-                        "https://paneldecontrolem.cl/api/category/",
+                        "https://qa.paneldecontrolem.cl/api/category/",
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -434,7 +434,7 @@ export default {
             if(token) {
                 try {
                     const response = await axios.get(
-                        "https://paneldecontrolem.cl/api/section/all",
+                        "https://qa.paneldecontrolem.cl/api/section/all",
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -462,7 +462,7 @@ export default {
             if(token) {
                 try {
                     const response = await axios.get(
-                        "https://paneldecontrolem.cl/api/category/search/" + this.section_input,
+                        "https://qa.paneldecontrolem.cl/api/category/search/" + this.section_input,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,

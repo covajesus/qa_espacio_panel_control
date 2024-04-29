@@ -665,7 +665,7 @@ export default {
 
             try {
                 const response = await axios.get(
-                    "https://paneldecontrolem.cl/api/region/",
+                    "https://qa.paneldecontrolem.cl/api/region/",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -692,7 +692,7 @@ export default {
             for (const region_id of region_ids) {
                 try {
                 const response = await axios.get(
-                    "https://paneldecontrolem.cl/api/commune/" + region_id,
+                    "https://qa.paneldecontrolem.cl/api/commune/" + region_id,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -716,7 +716,7 @@ export default {
             for (const region_id of this.region_input) {
                 try {
                 const response = await axios.get(
-                    "https://paneldecontrolem.cl/api/commune/" + region_id,
+                    "https://qa.paneldecontrolem.cl/api/commune/" + region_id,
                     {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -735,7 +735,7 @@ export default {
             // Obtiene las comunas seleccionadas asociadas a la sección
             try {
                 const response = await axios.get(
-                "https://paneldecontrolem.cl/api/section_commune/" + this.$route.params.id,
+                "https://qa.paneldecontrolem.cl/api/section_commune/" + this.$route.params.id,
                 {
                     headers: {
                     accept: "application/json",
@@ -798,7 +798,7 @@ export default {
 
             try {
                 const response = await axios.post(
-                    "https://paneldecontrolem.cl/api/section/" + this.$route.params.id,
+                    "https://qa.paneldecontrolem.cl/api/section/" + this.$route.params.id,
                     formData,
                     {
                         headers: {
@@ -823,7 +823,7 @@ export default {
 
             try {
                 const response = await axios.get(
-                    "https://paneldecontrolem.cl/api/section/" + this.$route.params.id,
+                    "https://qa.paneldecontrolem.cl/api/section/" + this.$route.params.id,
                     {
                         headers: {
                             accept: "application/json",
@@ -883,7 +883,7 @@ export default {
 
             try {
                 const response = await axios.get(
-                    "https://paneldecontrolem.cl/api/section_region/" + this.$route.params.id,
+                    "https://qa.paneldecontrolem.cl/api/section_region/" + this.$route.params.id,
                     {
                         headers: {
                             accept: "application/json",

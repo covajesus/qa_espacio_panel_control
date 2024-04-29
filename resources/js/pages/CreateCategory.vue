@@ -670,7 +670,7 @@ export default {
 
                 try {
                 const response = await axios.post(
-                        "https://paneldecontrolem.cl/api/audit/store",
+                        "https://qa.paneldecontrolem.cl/api/audit/store",
                         formData,
                         {
                             headers: {
@@ -704,7 +704,7 @@ export default {
             if(token) {
                 try {
                     const response = await axios.get(
-                        "https://paneldecontrolem.cl/api/category/search/" + this.section_input,
+                        "https://qa.paneldecontrolem.cl/api/category/search/" + this.section_input,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -732,7 +732,7 @@ export default {
             if(token) {
                 try {
                     const response = await axios.get(
-                        "https://paneldecontrolem.cl/api/region/",
+                        "https://qa.paneldecontrolem.cl/api/region/",
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -764,7 +764,7 @@ export default {
                 for (const region_id of region_ids) {
                     try {
                         const response = await axios.get(
-                            "https://paneldecontrolem.cl/api/commune/" + region_id,
+                            "https://qa.paneldecontrolem.cl/api/commune/" + region_id,
                                 {
                                     headers: {
                                         Authorization: `Bearer ${token}`,
@@ -829,7 +829,7 @@ export default {
 
                 try {
                     const response = await axios.post(
-                        "https://paneldecontrolem.cl/api/category/store",
+                        "https://qa.paneldecontrolem.cl/api/category/store",
                         formData,
                         {
                             headers: {
@@ -861,7 +861,7 @@ export default {
             if(token) {
                 try {
                     const response = await axios.get(
-                        "https://paneldecontrolem.cl/api/section/all",
+                        "https://qa.paneldecontrolem.cl/api/section/all",
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
