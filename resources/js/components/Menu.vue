@@ -173,7 +173,7 @@ export default {
 
         axios.get('/session-data')
         .then(response => {
-            alert(response)
+            console.log(response)
             this.rol_id = response.data.rol_id;
         })
         .catch(error => {
