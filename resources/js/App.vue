@@ -45,7 +45,7 @@
                         style="height: 100%"
                     >
                         <img
-                            :src="`../../template/dist/img/logo.jpg`"
+                            :src="`../../template/dist/img/logo_frontend.png`"
                             id="login-logo"
                             alt="Logo Home"
                         />
