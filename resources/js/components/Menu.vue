@@ -116,6 +116,28 @@ export default {
             localStorage.removeItem('rol_id');
             localStorage.removeItem('names');
             localStorage.removeItem('email');
+            localStorage.removeItem('add_section');
+            localStorage.removeItem('edit_section');
+            localStorage.removeItem('delete_section');
+            localStorage.removeItem('copy_section');
+            localStorage.removeItem('order_section');
+            localStorage.removeItem('add_category');
+            localStorage.removeItem('edit_category');
+            localStorage.removeItem('delete_category');
+            localStorage.removeItem('copy_category');
+            localStorage.removeItem('order_category');
+            localStorage.removeItem('add_content');
+            localStorage.removeItem('edit_content');
+            localStorage.removeItem('delete_content');
+            localStorage.removeItem('copy_content');
+            localStorage.removeItem('order_content');
+            localStorage.removeItem('watch_audit');
+            localStorage.removeItem('add_user');
+            localStorage.removeItem('edit_user');
+            localStorage.removeItem('delete_user');
+            localStorage.removeItem('add_rol');
+            localStorage.removeItem('edit_rol');
+            localStorage.removeItem('delete_rol');
             
             window.location.href = '/';
         },
@@ -145,6 +167,30 @@ export default {
                     this.add_rol = response.data.rol_permissions.add_rol;
                     this.edit_rol = response.data.rol_permissions.edit_rol;
                     this.delete_rol = response.data.rol_permissions.delete_rol;
+                    
+
+                    localStorage.setItem('add_section', response.data.rol_permissions.add_section)
+                    localStorage.setItem('edit_section', response.data.rol_permissions.edit_section)
+                    localStorage.setItem('delete_section', response.data.rol_permissions.delete_section)
+                    localStorage.setItem('copy_section', response.data.rol_permissions.copy_section)
+                    localStorage.setItem('order_section', response.data.rol_permissions.order_section)
+                    localStorage.setItem('add_category', response.data.rol_permissions.add_category)
+                    localStorage.setItem('edit_category', response.data.rol_permissions.edit_category)
+                    localStorage.setItem('delete_category', response.data.rol_permissions.delete_category)
+                    localStorage.setItem('copy_category', response.data.rol_permissions.copy_category)
+                    localStorage.setItem('order_category', response.data.rol_permissions.order_category)
+                    localStorage.setItem('add_content', response.data.rol_permissions.add_content)
+                    localStorage.setItem('edit_content', response.data.rol_permissions.edit_content)
+                    localStorage.setItem('delete_content', response.data.rol_permissions.delete_content)
+                    localStorage.setItem('copy_content', response.data.rol_permissions.copy_content)
+                    localStorage.setItem('order_content', response.data.rol_permissions.order_content)
+                    localStorage.setItem('watch_audit', response.data.rol_permissions.watch_audit)
+                    localStorage.setItem('add_user', response.data.rol_permissions.add_user)
+                    localStorage.setItem('edit_user', response.data.rol_permissions.edit_user)
+                    localStorage.setItem('delete_user', response.data.rol_permissions.delete_user)
+                    localStorage.setItem('add_rol', response.data.rol_permissions.add_rol)
+                    localStorage.setItem('edit_rol', response.data.rol_permissions.edit_rol)
+                    localStorage.setItem('delete_rol', response.data.rol_permissions.delete_rol)
                 })
                 .catch((error) => {
                     if (
