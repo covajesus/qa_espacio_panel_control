@@ -140,10 +140,50 @@ export default {
             localStorage.removeItem('delete_rol');
             
             window.location.href = '/';
-        }
+        },
+        get_permissions(rol_id) {
+            axios
+                .get("https://qa.paneldecontrolem.cl/api/rol/" + rol_id)
+                .then((response) => {
+                    localStorage.setItem('add_section', response.data.rol_permissions.add_section)
+                    localStorage.setItem('edit_section', response.data.rol_permissions.edit_section)
+                    localStorage.setItem('delete_section', response.data.rol_permissions.delete_section)
+                    localStorage.setItem('copy_section', response.data.rol_permissions.copy_section)
+                    localStorage.setItem('order_section', response.data.rol_permissions.order_section)
+                    localStorage.setItem('add_category', response.data.rol_permissions.add_category)
+                    localStorage.setItem('edit_category', response.data.rol_permissions.edit_category)
+                    localStorage.setItem('delete_category', response.data.rol_permissions.delete_category)
+                    localStorage.setItem('copy_category', response.data.rol_permissions.copy_category)
+                    localStorage.setItem('order_category', response.data.rol_permissions.order_category)
+                    localStorage.setItem('add_content', response.data.rol_permissions.add_content)
+                    localStorage.setItem('edit_content', response.data.rol_permissions.edit_content)
+                    localStorage.setItem('delete_content', response.data.rol_permissions.delete_content)
+                    localStorage.setItem('copy_content', response.data.rol_permissions.copy_content)
+                    localStorage.setItem('order_content', response.data.rol_permissions.order_content)
+                    localStorage.setItem('watch_audit', response.data.rol_permissions.watch_audit)
+                    localStorage.setItem('add_user', response.data.rol_permissions.add_user)
+                    localStorage.setItem('edit_user', response.data.rol_permissions.edit_user)
+                    localStorage.setItem('delete_user', response.data.rol_permissions.delete_user)
+                    localStorage.setItem('add_rol', response.data.rol_permissions.add_rol)
+                    localStorage.setItem('edit_rol', response.data.rol_permissions.edit_rol)
+                    localStorage.setItem('delete_rol', response.data.rol_permissions.delete_rol)
+                })
+                .catch((error) => {
+                    if (
+                        error ==
+                        "AxiosError: Request failed with status code 401"
+                    ) {
+                        this.incorrect_login_data = true;
+                        this.loading = false;
+                    }
+                });
+            },
     },
     async created() {
-        console.log(localStorage.getItem('rol_id'))
+        await this.get_permissions(localStorage.getItem('rol_id'));
+
+        this.rol_id = localStorage.getItem('rol_id');
+
         this.add_section = localStorage.getItem('add_section');
         this.edit_section = localStorage.getItem('edit_section');
         this.delete_section = localStorage.getItem('delete_section');
@@ -171,15 +211,6 @@ export default {
         this.add_rol = localStorage.getItem('add_rol');
         this.edit_rol = localStorage.getItem('edit_rol');
         this.delete_rol = localStorage.getItem('delete_rol');
-
-        axios.get('/session-data')
-        .then(response => {
-            console.log(response)
-            this.rol_id = response.data.rol_id;
-        })
-        .catch(error => {
-            console.log(error);
-        });
     }
 }
 </script>
