@@ -46,6 +46,7 @@
                     >
                         <img
                             :src="`../../template/dist/img/logo_frontend.png`"
+                            loading="lazy"
                             id="login-logo"
                             alt="Logo Home"
                         />

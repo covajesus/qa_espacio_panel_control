@@ -153,7 +153,7 @@
                                                 <i class="fa-solid fa-plus"></i>
                                             </a>
                                             <router-link
-                                                :to="`/category/edit/${p.row.id}`"
+                                                :to="`/content/edit/${p.row.id}`"
                                                 class="btn btn-success mr-2"
                                                 v-if="edit_content == 1"
                                             >
