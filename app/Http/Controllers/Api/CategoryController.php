@@ -265,7 +265,11 @@ class CategoryController extends Controller
                     // Realizar la búsqueda mediante la expresión regular
                     preg_match($pattern, $html, $matches);
 
-                    $icon = $matches[1];
+                    if (isset($matches[1])) {
+                        $icon = $matches[1];
+                    } else {
+                        $icon = '';
+                    }
                 } else {
                     $icon = '';
                 }
@@ -443,7 +447,23 @@ class CategoryController extends Controller
         if($request->hasFile('icon_image')) { 
             $icon = time().'_'.'icon.'.$request->icon_image->getClientOriginalExtension();
         } else {
-            $icon = $request->fa_icon;
+            if($request->fa_icon != '' && $request->fa_icon != null) {
+                $html = $request->fa_icon;
+                
+                // Definir la expresión regular
+                $pattern = '/class="(.*?)"/';
+
+                // Realizar la búsqueda mediante la expresión regular
+                preg_match($pattern, $html, $matches);
+
+                if (isset($matches[1])) {
+                    $icon = $matches[1];
+                } else {
+                    $icon = '';
+                }
+            } else {
+                $icon = '';
+            }
         }
 
         if($request->hasFile('pdf')) { 
