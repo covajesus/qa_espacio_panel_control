@@ -770,6 +770,32 @@ export default {
                 this.loading = false;
             }
         },
+        async getRegions() {
+            this.loading = true;
+            const token = localStorage.getItem("token");
+
+            if(token) {
+                try {
+                    const response = await axios.get(
+                        "https://qa.paneldecontrolem.cl/api/region/",
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                                accept: "application/json",
+                            },
+                        }
+                    );
+
+                    this.region_posts = response.data.data;
+                    this.loading = false;
+                } catch (error) {
+                    console.error("Error al obtener la lista de regiones:", error);
+                }
+            } else {
+                this.$router.push("/login");
+                this.loading = false;
+            }
+        },
         async getCommunes() {
             const token = localStorage.getItem("token");
 
