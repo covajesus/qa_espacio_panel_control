@@ -247,6 +247,8 @@ export default {
                             },
                         }
                     );
+
+                    window.location.reload();
                 } catch (error) {
                     console.error("Error al copiar la sección:", error);
                 }

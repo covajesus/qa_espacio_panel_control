@@ -143,7 +143,7 @@ class SectionController extends Controller
 
             $section = Section::create([
                 'status_id' => $section_to_copy->status_id,
-                'title' => $section_to_copy->title,
+                'title' => 'Copia de ' . $section_to_copy->title .' ' . $section_qty,
                 'google_tag' => $section_to_copy->google_tag,
                 'position' => $section_qty,
                 'color' => $section_to_copy->color,
