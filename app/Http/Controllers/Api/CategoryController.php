@@ -148,7 +148,7 @@ class CategoryController extends Controller
             $category = Category::create([
                 'section_id' => $category_to_copy->section_id,
                 'status_id' => $category_to_copy->status_id,
-                'title' => $category_to_copy->title,
+                'title' => 'Copia de ' . $category_to_copy->title,
                 'google_tag' => $category_to_copy->google_tag,
                 'position' => $category_qty,
                 'color' => $category_to_copy->color,
