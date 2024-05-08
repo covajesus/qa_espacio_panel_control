@@ -784,7 +784,7 @@ export default {
                 // Obtiene las comunas seleccionadas asociadas a la sección
                 try {
                     const response = await axios.get(
-                    "https://qa.paneldecontrolem.cl/api/category_commune/" + this.$route.params.id,
+                    "https://qa.paneldecontrolem.cl/api/content_commune/" + this.$route.params.id,
                     {
                         headers: {
                         accept: "application/json",
@@ -853,7 +853,7 @@ export default {
 
                 try {
                     const response = await axios.post(
-                        "https://qa.paneldecontrolem.cl/api/category/" + this.$route.params.id,
+                        "https://qa.paneldecontrolem.cl/api/content/" + this.$route.params.id,
                         formData,
                         {
                             headers: {
@@ -866,11 +866,11 @@ export default {
                     this.posts = response.data.data;
                     this.loading = false;
 
-                    localStorage.setItem("updated_category", 1);
+                    localStorage.setItem("updated_content", 1);
 
                     this.$router.push("/categories");
                 } catch (error) {
-                    console.error("Error al actualizar la categoría:", error);
+                    console.error("Error al actualizar el contenido:", error);
                 }
             } else {
                 this.loading = false;
@@ -882,7 +882,7 @@ export default {
             if(token) {
                 try {
                     const response = await axios.get(
-                        "https://qa.paneldecontrolem.cl/api/category/" + this.$route.params.id,
+                        "https://qa.paneldecontrolem.cl/api/content/" + this.$route.params.id,
                         {
                             headers: {
                                 accept: "application/json",
@@ -934,7 +934,7 @@ export default {
                         localStorage.removeItem("accessToken");
                     } else {
                         console.error(
-                            "Error al obtener los datos de la categoría:",
+                            "Error al obtener los datos del contenido:",
                             error
                         );
                     }
@@ -942,7 +942,7 @@ export default {
 
                 try {
                     const response = await axios.get(
-                        "https://qa.paneldecontrolem.cl/api/category_region/" + this.$route.params.id,
+                        "https://qa.paneldecontrolem.cl/api/content_region/" + this.$route.params.id,
                         {
                             headers: {
                                 accept: "application/json",
