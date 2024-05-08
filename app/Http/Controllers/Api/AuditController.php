@@ -15,7 +15,7 @@ class AuditController extends Controller
     {
         $audits = Audit::select('audits.id', 'audits.user_id', 'audits.created_at', 'users.name', 'audits.task_id', 'audits.task')
         ->leftJoin('users', 'audits.user_id', '=', 'users.id')
-        ->orderByDesc('audits.id')
+        ->orderByDesc('audits.created_at')
         ->paginate(10);
 
         return response()->json([
