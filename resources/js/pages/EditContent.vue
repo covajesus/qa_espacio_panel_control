@@ -942,7 +942,7 @@ export default {
 
                     localStorage.setItem("updated_content", 1);
 
-                    this.$router.push("/categories");
+                    this.$router.push("/contents");
                 } catch (error) {
                     console.error("Error al actualizar el contenido:", error);
                 }
