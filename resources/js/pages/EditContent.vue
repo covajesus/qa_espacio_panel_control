@@ -30,7 +30,7 @@
                                 <form @submit.prevent="submit">
                                     <div class="card-body">
                                         <div class="row mt-12">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <label for="rut"
                                                     >Sección
                                                     <span class="text-danger"
@@ -44,6 +44,22 @@
                                                 >
                                                     <option value="">- Secciones -</option>
                                                     <option v-for="section_post in section_posts" :key="section_post.id" :value="section_post.id">{{ section_post.title }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="rut"
+                                                    >Categoría
+                                                    <span class="text-danger"
+                                                        >*</span
+                                                    ></label
+                                                >
+                                                <select
+                                                    required
+                                                    v-model="category_input"
+                                                    class="form-control"
+                                                >
+                                                    <option value="">- Categorías -</option>
+                                                    <option v-for="category_post in category_posts" :key="category_post.id" :value="category_post.id">{{ category_post.title }}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -654,6 +670,8 @@ export default {
             region_posts: [],
             section_input: '',
             section_posts: [],
+            category_input: '',
+            category_posts: [],
         };
     },
     methods: {
@@ -696,14 +714,13 @@ export default {
                 this.loading = false;
             }
         },
-        async getRegions() {
-            this.loading = true;
+        async getSections() {
             const token = localStorage.getItem("token");
 
             if(token) {
                 try {
                     const response = await axios.get(
-                        "https://qa.paneldecontrolem.cl/api/region/",
+                        "https://qa.paneldecontrolem.cl/api/section/all",
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
@@ -712,10 +729,40 @@ export default {
                         }
                     );
 
-                    this.region_posts = response.data.data;
-                    this.loading = false;
+                    this.section_posts = response.data.data;
                 } catch (error) {
-                    console.error("Error al obtener la lista de regiones:", error);
+                    console.error(
+                        "Error al obtener la lista de secciones:",
+                        error
+                    );
+                }
+            } else {
+                this.$router.push("/login");
+                this.isLoading = false;
+                this.loading = false;
+            }
+        },
+        async getCategories() {
+            const token = localStorage.getItem("token");
+
+            if(token) {
+                try {
+                    const response = await axios.get(
+                        "https://qa.paneldecontrolem.cl/api/category/all",
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                                accept: "application/json",
+                            },
+                        }
+                    );
+
+                    this.category_posts = response.data.data;
+                } catch (error) {
+                    console.error(
+                        "Error al obtener la lista de categorias:",
+                        error
+                    );
                 }
             } else {
                 this.$router.push("/login");
@@ -815,6 +862,7 @@ export default {
                 const formData = new FormData();
 
                 formData.append("section_id", this.section_input);
+                formData.append("category_id", this.category_input);
                 formData.append("status_id", 1);
                 formData.append("title", this.title_input);
                 formData.append("subtitle", this.subtitle_input);
@@ -892,6 +940,7 @@ export default {
                     );
                     
                     this.section_input = response.data.data.section_id;
+                    this.category_input = response.data.data.category_id;
                     this.status_id = response.data.data.status_id;
                     this.title_input = response.data.data.title;
                     this.subtitle_input = response.data.data.subtitle;
@@ -980,6 +1029,7 @@ export default {
         await this.getData();
         await this.getRegions();
         await this.getSections();
+        await this.getCategories();
     },
 };
 </script>
