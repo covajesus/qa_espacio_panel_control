@@ -748,7 +748,7 @@ export default {
             if(token) {
                 try {
                     const response = await axios.get(
-                        "https://qa.paneldecontrolem.cl/api/category/all",
+                        "https://qa.paneldecontrolem.cl/api/category/all/" + this.section_input,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`,
