@@ -455,7 +455,7 @@ class ContentController extends Controller
                 if (isset($matches[1])) {
                     $icon = $matches[1];
                 } else {
-                    $icon = '';
+                    $icon = $request->fa_icon;
                 }
             } else {
                 $icon = '';
