@@ -124,7 +124,7 @@ class CategoryController extends Controller
         try {
             $category_to_copy = Category::find($request->id);
 
-            $category_qty = Category::where('section_id', $category_to_copy->section_id)->count();
+            $category_qty = Category::where('section_id', $category_to_copy->section_id)->where('deleted_at', NULL)->count();
             $category_qty = $category_qty + 1;
 
             if($category_to_copy->icon_type_id == 2) { 

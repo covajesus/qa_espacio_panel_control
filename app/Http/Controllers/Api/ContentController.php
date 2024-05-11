@@ -118,7 +118,7 @@ class ContentController extends Controller
         try {
             $content_to_copy = Content::find($request->id);
 
-            $content_qty = Content::where('section_id', $content_to_copy->section_id)->where('category_id', $content_to_copy->category_id)->count();
+            $content_qty = Content::where('section_id', $content_to_copy->section_id)->where('category_id', $content_to_copy->category_id)->where('deleted_at', NULL)->count();
             $content_qty = $content_qty + 1;
 
             if($content_to_copy->icon_type_id == 2) { 
@@ -145,7 +145,7 @@ class ContentController extends Controller
                 'status_id' => $content_to_copy->status_id,
                 'title' => 'Copia de ' . $content_to_copy->title,
                 'google_tag' => $content_to_copy->google_tag,
-                'position' => $content_to_copy->position,
+                'position' => $content_qty,
                 'color' => $content_to_copy->color,
                 'start_date' => $content_to_copy->start_date,
                 'end_date' => $content_to_copy->end_date,
