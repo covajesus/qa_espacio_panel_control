@@ -809,16 +809,6 @@ class SectionController extends Controller
     {
         $section = Section::find($request->id);
 
-        $sections = Section::where('position', '>', $section->position)->where('deleted_at', NULL)->get();
-
-        foreach ($sections as $section) {
-            $section_to_move = Section::find($section->id);
-            $new_down_position = $section->position;
-            $new_down_position = $new_down_position - 1;
-            $section_to_move->position = $new_down_position;
-            $section_to_move->save();   
-        }
-
         if ($section->icon_type_id == 2) {
             $icon = $section->icon;
         } else {
@@ -848,6 +838,16 @@ class SectionController extends Controller
 
             if ($image != '') {
                 Storage::disk('local')->delete('public/'.$image);
+            }
+
+            $sections = Section::where('position', '>', $section->position)->where('deleted_at', NULL)->get();
+
+            foreach ($sections as $section) {
+                $section_to_move = Section::find($section->id);
+                $new_down_position = $section->position;
+                $new_down_position = $new_down_position - 1;
+                $section_to_move->position = $new_down_position;
+                $section_to_move->save();   
             }
         }
 
