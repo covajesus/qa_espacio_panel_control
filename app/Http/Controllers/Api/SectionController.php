@@ -61,13 +61,13 @@ class SectionController extends Controller
     {
         $id = $request->segment(4);
 
-        $section = Section::find($id);
+        $section = Section::where('id', $id)->where('deleted_at', NULL)->first();
         $new_up_position = $section->position;
         $new_up_position = $new_up_position + 1;
         $section->position = $new_up_position;
         $section->save();
 
-        $section = Section::where('position', $new_up_position)->where('id', '!=', $id)->first();
+        $section = Section::where('position', $new_up_position)->where('id', '!=', $id)->where('deleted_at', NULL)->first();
         $new_down_position = $section->position;
         $new_down_position = $new_down_position - 1;
         $section->position = $new_down_position;
@@ -86,13 +86,13 @@ class SectionController extends Controller
     {
         $id = $request->segment(4);
 
-        $section = Section::find($id);
+        $section = Section::where('id', $id)->where('deleted_at', NULL)->first();
         $new_up_position = $section->position;
         $new_up_position = $new_up_position - 1;
         $section->position = $new_up_position;
         $section->save();
 
-        $section = Section::where('position', $new_up_position)->where('id', '!=', $id)->first();
+        $section = Section::where('position', $new_up_position)->where('id', '!=', $id)->where('deleted_at', NULL)->first();
         $new_down_position = $section->position;
         $new_down_position = $new_down_position + 1;
         $section->position = $new_down_position;
