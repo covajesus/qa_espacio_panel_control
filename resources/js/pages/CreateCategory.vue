@@ -240,6 +240,7 @@
                                                     <option value="6">Llamada</option>
                                                     <option value="7">Página Externa</option>
                                                     <option value="8">Aplicación</option>
+                                                    <option value="9">Imagen</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -251,6 +252,7 @@
                                         || this.content_type_input == 6
                                         || this.content_type_input == 7
                                         || this.content_type_input == 8
+                                        || this.content_type_input == 9
                                         ">
                                             <div class="col-md-12">
                                                 <hr>
@@ -471,6 +473,15 @@
                                                 />
                                             </div>
                                         </div>
+                                        <div class="row mt-4" v-if="this.content_type_input == 9">
+                                            <div class="col-sm-12">
+                                                <label for="pdf"
+                                                    >Imagen</label
+                                                >
+                                                <input ref="image" accept=".jpg, .png" type="file" class="form-control" v-on:change="onFileChangeImage">
+
+                                            </div>
+                                        </div>
                                         <div class="row mt-4">
                                             <div class="col-md-12">
                                                 <hr>
@@ -624,6 +635,8 @@ export default {
             icon_status_input: "",
             icon_type_input: "",
             fa_icon_input: "",
+            image: "",
+            noImage: 0,
             icon_image: "",
             noIconImage: 0,
             content_type_input: "",
@@ -688,6 +701,10 @@ export default {
         },
         updateColor (eventData) {
             this.color = eventData.colors.hex
+        },
+        onFileChangeImage(e) {
+            this.image = e.target.files[0];
+            this.noImage = e.target.files.length;
         },
         onFileChangePdf(e){
             this.pdf = e.target.files[0];
@@ -826,6 +843,7 @@ export default {
                 formData.append("url_not_installed_app", this.url_not_installed_app_input);
                 formData.append("whatsapp_type_id", this.whatsapp_type_input);
                 formData.append("whatsapp_url", this.whatsapp_url_input);
+                formData.append("image", this.image);
 
                 try {
                     const response = await axios.post(

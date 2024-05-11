@@ -685,8 +685,8 @@ class CategoryController extends Controller
         if ($image != 'null' 
         && $image != null 
         && $image != '') {
-            $old_image = $section->image;
-            $section->image = $image;
+            $old_image = $category->image;
+            $category->image = $image;
         }
 
         $category->save();
