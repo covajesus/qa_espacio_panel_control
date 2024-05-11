@@ -143,7 +143,7 @@ class ContentController extends Controller
                 'section_id' => $content_to_copy->section_id,
                 'category_id' => $content_to_copy->category_id,
                 'status_id' => $content_to_copy->status_id,
-                'title' => $content_to_copy->title,
+                'title' => 'Copia de ' . $content_to_copy->title,
                 'google_tag' => $content_to_copy->google_tag,
                 'position' => $content_to_copy->position,
                 'color' => $content_to_copy->color,

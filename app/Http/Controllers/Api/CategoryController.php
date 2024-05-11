@@ -236,7 +236,7 @@ class CategoryController extends Controller
             } else {
                 return response()->json([
                     'success' => false,
-                    'data' => 'No se pudo crear la sección'
+                    'data' => 'No se pudo crear la categoría'
                 ], 500);
             }
         } catch (\Exception $e) {
