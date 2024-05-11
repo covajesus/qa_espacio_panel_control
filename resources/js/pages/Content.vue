@@ -330,6 +330,8 @@ export default {
                         console.error("Error al copiar el contenido:", error);
                     }
                 }
+
+                window.location.reload();
             } else {
                 this.$router.push("/login");
                 this.isLoading = false;

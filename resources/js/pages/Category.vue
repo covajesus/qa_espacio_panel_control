@@ -314,6 +314,8 @@ export default {
                         console.error("Error al copiar la categoría:", error);
                     }
                 }
+
+                window.location.reload();
             } else {
                 this.$router.push("/login");
             }
