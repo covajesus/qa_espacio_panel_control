@@ -52,7 +52,7 @@
                             alt="Logo Home"
                         />
                     </div>
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-danger" role="alert" v-if="incorrect_login_data">
                         Los datos ingresados son <strong>incorrectos</strong>
                     </div>
 
@@ -108,6 +108,7 @@ export default {
             names: "",
             rol_id: "",
             id: "",
+            incorrect_login_data: false,
         };
     },
     created() {
