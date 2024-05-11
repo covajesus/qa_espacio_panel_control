@@ -819,8 +819,8 @@ class ContentController extends Controller
             $pdf = '';
         }
 
-        if ($section->content_type_id == 9) {
-            $image = $section->image;
+        if ($content->content_type_id == 9) {
+            $image = $content->image;
         } else {
             $image = '';
         }

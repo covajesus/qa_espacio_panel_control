@@ -823,8 +823,8 @@ class CategoryController extends Controller
             $pdf = '';
         }
 
-        if ($section->content_type_id == 9) {
-            $image = $section->image;
+        if ($category->content_type_id == 9) {
+            $image = $category->image;
         } else {
             $image = '';
         }
