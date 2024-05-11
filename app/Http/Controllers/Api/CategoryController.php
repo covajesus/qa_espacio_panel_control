@@ -64,13 +64,13 @@ class CategoryController extends Controller
         $section_id = $request->segment(4);
         $id = $request->segment(5);
 
-        $category = Category::where('section_id', $section_id)->where('id', $id)->first();
+        $category = Category::where('section_id', $section_id)->where('id', $id)->where('deleted_at', NULL)->first();
         $new_up_position = $category->position;
         $new_up_position = $new_up_position + 1;
         $category->position = $new_up_position;
         $category->save();
 
-        $category = Category::where('position', $new_up_position)->where('section_id', $section_id)->where('id', '!=', $id)->first();
+        $category = Category::where('position', $new_up_position)->where('section_id', $section_id)->where('id', '!=', $id)->where('deleted_at', NULL)->first();
         $new_down_position = $category->position;
         $new_down_position = $new_down_position - 1;
         $category->position = $new_down_position;
@@ -90,13 +90,13 @@ class CategoryController extends Controller
         $section_id = $request->segment(4);
         $id = $request->segment(5);
 
-        $category = Category::where('section_id', $section_id)->where('id', $id)->first();
+        $category = Category::where('section_id', $section_id)->where('id', $id)->where('deleted_at', NULL)->first();
         $new_up_position = $category->position;
         $new_up_position = $new_up_position - 1;
         $category->position = $new_up_position;
         $category->save();
 
-        $category = Category::where('position', $new_up_position)->where('section_id', $section_id)->where('id', '!=', $id)->first();
+        $category = Category::where('position', $new_up_position)->where('section_id', $section_id)->where('id', '!=', $id)->where('deleted_at', NULL)->first();
         $new_down_position = $category->position;
         $new_down_position = $new_down_position + 1;
         $category->position = $new_down_position;
@@ -840,6 +840,16 @@ class CategoryController extends Controller
 
             if ($image != '') {
                 Storage::disk('local')->delete('public/'.$image);
+            }
+
+            $categories = Category::where('position', '>', $category->position)->where('deleted_at', NULL)->get();
+
+            foreach ($categories as $category) {
+                $category_to_move = Category::find($category->id);
+                $new_down_position = $category->position;
+                $new_down_position = $new_down_position - 1;
+                $category_to_move->position = $new_down_position;
+                $category_to_move->save();   
             }
         }
 

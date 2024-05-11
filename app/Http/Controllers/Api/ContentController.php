@@ -37,13 +37,13 @@ class ContentController extends Controller
         $category_id = $request->segment(5);
         $id = $request->segment(6);
 
-        $content = Content::where('section_id', $section_id)->where('category_id', $category_id)->where('id', $id)->first();
+        $content = Content::where('section_id', $section_id)->where('category_id', $category_id)->where('id', $id)->where('deleted_at', NULL)->first();
         $new_up_position = $content->position;
         $new_up_position = $new_up_position + 1;
         $content->position = $new_up_position;
         $content->save();
 
-        $content = Content::where('position', $new_up_position)->where('section_id', $section_id)->where('category_id', $category_id)->where('id', '!=', $id)->first();
+        $content = Content::where('position', $new_up_position)->where('section_id', $section_id)->where('category_id', $category_id)->where('id', '!=', $id)->where('deleted_at', NULL)->first();
         $new_down_position = $content->position;
         $new_down_position = $new_down_position - 1;
         $content->position = $new_down_position;
@@ -64,13 +64,13 @@ class ContentController extends Controller
         $category_id = $request->segment(5);
         $id = $request->segment(6);
 
-        $content = Content::where('section_id', $section_id)->where('category_id', $category_id)->where('id', $id)->first();
+        $content = Content::where('section_id', $section_id)->where('category_id', $category_id)->where('id', $id)->where('deleted_at', NULL)->first();
         $new_up_position = $content->position;
         $new_up_position = $new_up_position - 1;
         $content->position = $new_up_position;
         $content->save();
 
-        $content = Content::where('position', $new_up_position)->where('section_id', $section_id)->where('category_id', $category_id)->where('id', '!=', $id)->first();
+        $content = Content::where('position', $new_up_position)->where('section_id', $section_id)->where('category_id', $category_id)->where('id', '!=', $id)->where('deleted_at', NULL)->first();
         $new_down_position = $content->position;
         $new_down_position = $new_down_position + 1;
         $content->position = $new_down_position;
@@ -827,7 +827,6 @@ class ContentController extends Controller
         
         if($content->delete()) {
             if ($icon != '') {
-                echo $icon;
                 Storage::disk('local')->delete('public/'.$icon);
             }
 
@@ -837,6 +836,16 @@ class ContentController extends Controller
 
             if ($image != '') {
                 Storage::disk('local')->delete('public/'.$image);
+            }
+
+            $contents = Content::where('position', '>', $content->position)->where('deleted_at', NULL)->get();
+
+            foreach ($contents as $content) {
+                $content_to_move = Content::find($content->id);
+                $new_down_position = $content->position;
+                $new_down_position = $new_down_position - 1;
+                $content_to_move->position = $new_down_position;
+                $content_to_move->save();   
             }
         }
 
