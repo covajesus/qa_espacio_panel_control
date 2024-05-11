@@ -40,9 +40,7 @@
                 style="height: 100vh"
             >
                 <div class="col-md-6">
-                    <div class="alert alert-danger" role="alert">
-                        Los datos ingresados son <strong>incorreectos</strong>
-                    </div>
+                    
                     <div
                         class="d-flex justify-content-center align-items-center"
                         style="height: 100%"
@@ -53,6 +51,9 @@
                             id="login-logo"
                             alt="Logo Home"
                         />
+                    </div>
+                    <div class="alert alert-danger" role="alert">
+                        Los datos ingresados son <strong>incorrectos</strong>
                     </div>
 
                     <div class="card">
