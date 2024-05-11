@@ -325,12 +325,11 @@ export default {
                             }
                         );
                         
+                        this.submit();
                     } catch (error) {
                         console.error("Error al copiar el contenido:", error);
                     }
                 }
-
-                this.submit();
             } else {
                 this.$router.push("/login");
                 this.isLoading = false;
