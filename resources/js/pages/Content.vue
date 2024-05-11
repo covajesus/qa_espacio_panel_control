@@ -325,13 +325,12 @@ export default {
                             }
                         );
                         
-                        this.submit();
                     } catch (error) {
                         console.error("Error al copiar el contenido:", error);
                     }
                 }
 
-                window.location.reload();
+                this.submit();
             } else {
                 this.$router.push("/login");
                 this.isLoading = false;
@@ -557,7 +556,7 @@ export default {
                     this.$axios
                         .delete("api/content/" + id, { headers })
                         .then((res) => {
-                            this.getData();
+                            this.submit();
                         });
                 }
             } else {

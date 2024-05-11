@@ -309,13 +309,13 @@ export default {
                             }
                         );
                         
-                        this.submit();
+                        
                     } catch (error) {
                         console.error("Error al copiar la categoría:", error);
                     }
                 }
 
-                window.location.reload();
+                this.submit();
             } else {
                 this.$router.push("/login");
             }
