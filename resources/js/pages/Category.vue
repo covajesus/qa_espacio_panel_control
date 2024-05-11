@@ -501,7 +501,7 @@ export default {
                     this.$axios
                         .delete("api/category/" + id, { headers })
                         .then((res) => {
-                            this.getData();
+                            this.submit();
                         });
                 }
             } else {
